@@ -6,6 +6,7 @@ import authOperations from './redux/auth/auth-operations';
 import authSelectors from 'redux/auth/auth-selectors';
 import PrivateRoute from './helpers/PrivateRoute';
 import PublicRoute from './helpers/PublicRoute';
+import Statistics from 'components/statistics/statistics';
 //
 //
 const HomeView = lazy(() => import('./pages/HomeView'));
@@ -34,6 +35,7 @@ export default function App() {
                 element={
                   <PublicRoute>
                     <h2>Старт?</h2>
+                    <Statistics />
                   </PublicRoute>
                 }
               />
@@ -58,6 +60,15 @@ export default function App() {
                 element={
                   <PrivateRoute redirectTo="/login">
                     <h2>wallet?</h2>
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/statistics"
+                element={
+                  <PrivateRoute redirectTo="/login">
+                    <h2>Statistics</h2>
+                    <Statistics />
                   </PrivateRoute>
                 }
               />
